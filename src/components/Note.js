@@ -1,68 +1,32 @@
-import React from "react";
-import styled from "styled-components";
-
-const Section = styled.section`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const DivNote = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Div = styled.div`
-  background-color: #f2f1f7;
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-`;
-
-const Nav = styled.nav`
-  border-bottom: 1px solid #d9d8dd;
-`;
-
-const NavDiv = styled.div`
-  display: flex;
-  margin: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding: 15.4px;
-`;
-
-const P = styled.p`
-  line-height: 1;
-  font-size: 20px;
-  color: #333;
-  font-family: monospace;
-  font-weight: bold;
-  margin: 0 0.8rem;
-  padding: 0.2rem 0.8rem;
-
-  cursor: pointer;
-`;
+import React, { useContext } from "react";
+import * as _ from "../style/components/Note.Style";
+import { Editor } from "draft-js";
+import { StoreContext } from "../utils/Store";
 
 function Note() {
+  const { DRAFT } = useContext(StoreContext);
+  const { editorState, setEditorState } = DRAFT;
+
+  const handleChange = (editorState) => {
+    setEditorState(editorState);
+  };
+
   return (
-    <Section>
-      <Nav>
-        <NavDiv>
-          <P>U</P>
-          <P>B</P>
-          <P>I</P>
-          <P>abc</P>
-        </NavDiv>
-      </Nav>
-      <DivNote>
-        <Div></Div>
-      </DivNote>
-    </Section>
+    <_.Section>
+      <_.Nav>
+        <_.NavDiv>
+          <_.P>U</_.P>
+          <_.P>B</_.P>
+          <_.P>I</_.P>
+          <_.P>abc</_.P>
+        </_.NavDiv>
+      </_.Nav>
+      <_.DivNote>
+        <_.Div>
+          <Editor editorState={editorState} onChange={handleChange} />
+        </_.Div>
+      </_.DivNote>
+    </_.Section>
   );
 }
 
