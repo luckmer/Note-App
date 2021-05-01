@@ -43,7 +43,12 @@ function SideBar() {
         <Span>Search</Span>
       </Header>
       <Data>
-        <Div></Div>
+        <Div>
+          <p>text</p>
+          <p>text</p>
+          <p>text</p>
+          <p>text</p>
+        </Div>
       </Data>
     </Section>
   );
