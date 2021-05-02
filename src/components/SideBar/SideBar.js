@@ -14,21 +14,21 @@ const Return = (obj, current, data) => {
 function SideBar() {
   const { DRAFT } = useContext(StoreContext);
   const { notes, OpenById, setNotes } = DRAFT;
-  const [detect, setDetect] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [dragData, setDragData] = useState({ current: "", target: "" });
-  const [Update, setUpdate] = useState([]);
-  const [DroppedData, setDroppedData] = useState([]);
+  // const [detect, setDetect] = useState(false);
+  // const [categories, setCategories] = useState([]);
+  // const [dragData, setDragData] = useState({ current: "", target: "" });
+  // const [Update, setUpdate] = useState([]);
+  // const [DroppedData, setDroppedData] = useState([]);
 
-  useEffect(() => {
-    const category = notes.map((item) => item.alter);
-    setCategories(category);
-  }, [notes]);
+  // useEffect(() => {
+  //   const category = notes.map((item) => item.alter);
+  //   setCategories(category);
+  // }, [notes]);
 
-  const categoriesPanel = [...new Set(categories)];
+  // const categoriesPanel = [...new Set(categories)];
 
-  const Style = (e) => e.target.classList.remove("Click");
-  const onDragOver = () => {};
+  // const Style = (e) => e.target.classList.remove("Click");
+  // const onDragOver = () => {};
 
   return (
     <_.Section>
@@ -37,7 +37,7 @@ function SideBar() {
       </_.Header>
       <_.Data>
         <_.Div>
-          {categoriesPanel.map((data, i) => {
+          {/* {categoriesPanel.map((data, i) => {
             const FilterByCategory = notes.filter(
               (item) => item.category.trim() === data.trim()
             );
@@ -61,7 +61,7 @@ function SideBar() {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </_.Div>
       </_.Data>
     </_.Section>
