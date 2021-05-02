@@ -17,6 +17,7 @@ export const Div = styled.div`
 
 export const Nav = styled.nav`
   border-bottom: 1px solid #d9d8dd;
+  background-color: #1b2028;
 `;
 
 export const NavDiv = styled.div`
@@ -51,4 +52,8 @@ export const DivNote = styled.div`
 export const NoteDiv = styled.div`
   height: 100%;
   overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 `;
