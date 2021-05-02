@@ -8,14 +8,6 @@ export const Section = styled.section`
   flex-direction: column;
 `;
 
-export const DivNote = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Div = styled.div`
   background-color: #f2f1f7;
   width: 95%;
@@ -29,6 +21,8 @@ export const Nav = styled.nav`
 
 export const NavDiv = styled.div`
   display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
   margin: 5px;
   padding-left: 20px;
   padding-right: 20px;
@@ -43,6 +37,18 @@ export const P = styled.p`
   font-weight: bold;
   margin: 0 0.8rem;
   padding: 0.2rem 0.8rem;
-
   cursor: pointer;
+`;
+
+export const DivNote = styled.div`
+  width: 100%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoteDiv = styled.div`
+  height: 100%;
+  overflow-y: scroll;
 `;
