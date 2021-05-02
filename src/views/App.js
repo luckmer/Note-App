@@ -1,7 +1,5 @@
-// import { useContext } from "react";
-import { Note, SideBar } from "../export/Index";
+import { Note, SideBar, Menu } from "../export/Index";
 import styled from "styled-components";
-// import { StoreContext } from "../utils/Store";
 
 const Main = styled.main`
   width: 100vw;
@@ -12,10 +10,9 @@ const Main = styled.main`
 `;
 
 function App() {
-  // const data = useContext(StoreContext);
-
   return (
     <Main>
+      <Menu />
       <SideBar />
       <Note />
     </Main>
