@@ -31,9 +31,9 @@ function Note() {
       </_.Nav>
       <_.DivNote>
         <_.Div>
-          <_.EditorDiv>
+          <_.NoteDiv id="here">
             <Editor editorState={editorState} onChange={handleChange} />
-          </_.EditorDiv>
+          </_.NoteDiv>
         </_.Div>
       </_.DivNote>
     </_.Section>
