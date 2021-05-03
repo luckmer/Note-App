@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { RichUtils, EditorState } from "draft-js";
 import { convertFromRaw, convertToRaw } from "draft-js";
+import { v4 as uuid } from "uuid";
 
 const converter = {
   toContent: (editorState) => convertToRaw(editorState.getCurrentContent()),
@@ -12,13 +13,11 @@ const converter = {
 export const useEditor = () => {
   const [notes, setNotes] = useState([]);
   const [currentNoteId, setCurrentNoteId] = useState(null);
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes"));
-    savedNotes.length && setNotes(savedNotes);
+    savedNotes && setNotes(savedNotes);
   }, []);
 
   useEffect(() => {
@@ -28,24 +27,20 @@ export const useEditor = () => {
     }
   }, [notes, currentNoteId]);
 
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+  useEffect(() => localStorage.setItem("notes", JSON.stringify(notes)), [
+    notes,
+  ]);
 
   const updateNote = (editorState) => {
     const updatedNotes = notes.map((note) => {
-      if (note.id === currentNoteId) {
+      if (note.id === currentNoteId)
         note.content = converter.toContent(editorState);
-      }
       return note;
     });
     setNotes(updatedNotes);
   };
 
-  useEffect(() => notes.length && updateNote(editorState), [
-    editorState,
-    notes.length,
-  ]);
+  useEffect(() => notes.length && updateNote(editorState), [editorState]);
 
   const openNote = (id) => {
     setCurrentNoteId(id);
@@ -53,12 +48,15 @@ export const useEditor = () => {
     setEditorState(converter.toEditorState(noteToOpen));
   };
 
-  const addNote = () => {
+  const addNote = (name, category) => {
     const emptyEditorState = EditorState.createEmpty();
 
     const newNote = {
-      id: new Date(),
+      id: uuid(),
       content: converter.toContent(emptyEditorState),
+      name,
+      category,
+      alter: category,
     };
 
     setNotes([...notes, newNote]);
@@ -93,5 +91,6 @@ export const useEditor = () => {
     deleteNote,
     toggleBlockType,
     toggleInlineStyle,
+    setNotes,
   ];
 };
