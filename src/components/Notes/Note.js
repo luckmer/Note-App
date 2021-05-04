@@ -43,7 +43,11 @@ function Note() {
       <_.DivNote>
         <_.Div onDragOver={(e) => onDragOver(e)} onDrop={() => Drop()}>
           <_.NoteDiv>
-            <Editor editorState={editorState} onChange={handleChange} />
+            {notes.length ? (
+              <Editor editorState={editorState} onChange={handleChange} />
+            ) : (
+              ""
+            )}
           </_.NoteDiv>
         </_.Div>
       </_.DivNote>
