@@ -5,7 +5,7 @@ import MapByCategory from "./MapByCategory";
 
 function SideBar() {
   const { DRAFT, DROP, CATEGORY, MOBILE } = useContext(StoreContext);
-  const { notes, windowWith } = DRAFT;
+  const { notes, windowWith, openNote } = DRAFT;
   const {
     onDragOver,
     Style,
@@ -16,6 +16,13 @@ function SideBar() {
   } = DROP;
   const { categoriesPanel } = CATEGORY;
   const { mobile, setMobileD } = MOBILE;
+
+  const handleClick = (id) => {
+    if (windowWith <= 722) {
+      openNote(id);
+      setMobileD(!mobile);
+    }
+  };
 
   return (
     <_.Section open={mobile}>
@@ -31,6 +38,7 @@ function SideBar() {
             <MapByCategory
               key={i}
               data={data}
+              handleClick={handleClick}
               onDragOver={onDragOver}
               Style={Style}
               notes={notes}
