@@ -4,8 +4,8 @@ import { StoreContext } from "../../utils/Store";
 import MapByCategory from "./MapByCategory";
 
 function SideBar() {
-  const { DRAFT, DROP, CATEGORY } = useContext(StoreContext);
-  const { notes } = DRAFT;
+  const { DRAFT, DROP, CATEGORY, MOBILE } = useContext(StoreContext);
+  const { notes, windowWith } = DRAFT;
   const {
     onDragOver,
     Style,
@@ -15,11 +15,15 @@ function SideBar() {
     DragControl,
   } = DROP;
   const { categoriesPanel } = CATEGORY;
+  const { mobile, setMobileD } = MOBILE;
 
   return (
-    <_.Section>
+    <_.Section open={mobile}>
       <_.Header>
         <_.Span>Notes</_.Span>
+        <_.Mobile open={windowWith <= 722} onClick={() => setMobileD(!mobile)}>
+          X
+        </_.Mobile>
       </_.Header>
       <_.Data>
         <_.Div>
