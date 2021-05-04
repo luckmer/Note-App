@@ -1,21 +1,13 @@
 import { Note, SideBar, Menu } from "../export/Index";
-import styled from "styled-components";
-
-const Main = styled.main`
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: row;
-`;
+import * as _ from "../style/views/App.Style";
 
 function App() {
   return (
-    <Main>
+    <_.Main>
       <Menu />
       <SideBar />
       <Note />
-    </Main>
+    </_.Main>
   );
 }
 
