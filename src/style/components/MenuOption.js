@@ -8,14 +8,45 @@ export const P = styled.p`
   border-radius: 50%;
   color: #0380a1;
   border: 2px solid transparent;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  margin: 2px 10px 2px 10px;
+  padding: 10px;
+  height: auto;
   &:hover {
-    width: 40px;
-    height: 40px;
+    margin: 2px 10px 2px 10px;
+    padding: 10px;
+
+    width: auto;
+    height: auto;
     opacity: 20%;
     border: 1px solid #0380a1;
-    border-radius: 50%;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+`;
+
+export const Mobile = styled.p`
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  border-radius: 50%;
+  color: #0380a1;
+  display: ${({ open }) => (open ? "flex" : "none")};
+  border: 2px solid transparent;
+  width: auto;
+  margin: 2px 10px 2px 10px;
+  padding: 10px;
+  height: auto;
+
+  &:hover {
+    margin: 2px 10px 2px 10px;
+    padding: 10px;
+
+    width: auto;
+    height: auto;
+    opacity: 20%;
+    border: 1px solid #0380a1;
+    border-radius: 10px;
     transition: 0.3s;
   }
 `;
@@ -108,4 +139,36 @@ export const Header = styled.div`
   border-top: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #191e25;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Input = styled.input`
+  background: none;
+  border: 1px solid #0380a1;
+  color: #fff;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+`;
+
+export const Submit = styled.button`
+  border: 0;
+  background-color: #0380a1;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px 30px 10px 30px;
+`;
+
+export const SubmitDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  text-align: center;
 `;

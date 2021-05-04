@@ -4,7 +4,6 @@ export const Section = styled.section`
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 `;
 
@@ -30,20 +29,9 @@ export const NavDiv = styled.div`
   padding: 15.4px;
 `;
 
-export const P = styled.p`
-  line-height: 1;
-  font-size: 20px;
-  color: #333;
-  font-family: monospace;
-  font-weight: bold;
-  margin: 0 0.8rem;
-  padding: 0.2rem 0.8rem;
-  cursor: pointer;
-`;
-
 export const DivNote = styled.div`
   width: 100%;
-  height: 95%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

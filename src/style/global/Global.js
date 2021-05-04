@@ -19,6 +19,12 @@ body{
   line-height:1em;
   font-family: 'Monaco', monospace;
   display: inline-block;
+  user-select: none;
+  -webkit-user-select: none
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  word-break: break-all;
 }
 
 .activeButton {
@@ -26,15 +32,20 @@ body{
 }
 
 .DraftEditor-root{
-  height:20vh;
-  margin: 20px;
+  height:0;
+  margin: 10px;
   padding: 5px;
   word-break: break-all; 
   font-family: 'Monaco',monospace;
 }
+.Click{
+  background-color: #e84545;
+  transition: 0.3s;
+}
+
 
 .public-DraftStyleDefault-ul , .public-DraftStyleDefault-ol , blockquote{
-  background-color:#fc929e;
+  background-color:#e84545;
   color:#fff;
   padding: 20px 20px 20px 25px;
   border-radius:5px;
@@ -45,14 +56,14 @@ body{
 
 .public-DraftStyleDefault-ol{
   padding-left:32px;
-  background-color:#c5a5c5;
+  background-color:#903749;
   color:#fff;
 }
 
 
 blockquote{
   padding-left:32px;
-  background-color:#79b6f2;
+  background-color:#53354a;
   color:#fff;
 }
 
