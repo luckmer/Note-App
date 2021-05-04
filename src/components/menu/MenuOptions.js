@@ -16,6 +16,11 @@ const MenuOptions = () => {
     handleClick();
   };
 
+  const handleMenu = () => {
+    setOpenMenu(!openMenu);
+    setMobileD(!mobile);
+  };
+
   return (
     <_.NavBar
       x={X}
@@ -29,10 +34,7 @@ const MenuOptions = () => {
           <_.Header>
             <_.P onClick={handleClick}>X</_.P>
             <_.P onClick={handleDelete}>Delete</_.P>
-            <_.Mobile
-              onClick={() => setMobileD(!mobile)}
-              open={windowWith <= 772}
-            >
+            <_.Mobile onClick={() => handleMenu()} open={windowWith <= 772}>
               Open
             </_.Mobile>
           </_.Header>
