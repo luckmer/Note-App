@@ -8,6 +8,7 @@ const CategoryData = ({ name, props }) => {
       onDrop={(e) => props.UpdateDragWay(e)}
       onDragStart={(e) => props.DragControl(e, name)}
       draggable
+      onClick={() => props.handleClick(name.id)}
     >
       <span>
         <div>
