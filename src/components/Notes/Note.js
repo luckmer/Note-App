@@ -1,4 +1,4 @@
-import { useContext, useCallback } from "react";
+import { useContext, useCallback, createRef } from "react";
 import { BlockStyleControls, InlineStyleControls } from "./BlockStyleControl";
 import * as _ from "../../style/components/Note.Style";
 import { StoreContext } from "../../utils/Store";
@@ -21,6 +21,8 @@ function Note() {
     [setEditorState]
   );
 
+  const textInput = createRef();
+
   const onDragOver = (e) => e.preventDefault();
 
   const Drop = () => {
@@ -40,9 +42,19 @@ function Note() {
   );
 
   const EditorState = useCallback(
-    () => <Editor editorState={editorState} onChange={handleChange} />,
-    [editorState, handleChange]
+    () => (
+      <Editor
+        editorState={editorState}
+        onChange={handleChange}
+        ref={textInput}
+      />
+    ),
+    [editorState, handleChange, textInput]
   );
+
+  const focusTextInput = () => {
+    textInput.current.focus();
+  };
 
   return (
     <_.Section>
@@ -53,7 +65,12 @@ function Note() {
         </_.NavDiv>
       </_.Nav>
       <_.DivNote>
-        <_.Div onDragOver={(e) => onDragOver(e)} onDrop={() => Drop()}>
+        <_.Div
+          onDragOver={(e) => onDragOver(e)}
+          onDrop={() => Drop()}
+          onClick={() => focusTextInput()}
+          id="here"
+        >
           <_.NoteDiv>{notes.length ? <EditorState /> : ""}</_.NoteDiv>
         </_.Div>
       </_.DivNote>
