@@ -1,5 +1,5 @@
 ##
-Link : https://react-note-app-1.herokuapp.com/
+Link : https://note-app-luckmer.netlify.app/
 # PC
 #
 ![](https://imgur.com/sewzBO4.png)
