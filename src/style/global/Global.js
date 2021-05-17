@@ -32,8 +32,8 @@ body{
 }
 
 .DraftEditor-root{
-  width: 100%;
-  height: 100%;
+  height:0;
+  margin: 10px;
   padding: 5px;
   word-break: break-all; 
   font-family: 'Monaco',monospace;
@@ -42,10 +42,7 @@ body{
   background-color: #e84545;
   transition: 0.3s;
 }
-.DraftEditor-editorContainer{
-  width: 100%;
-  height: 100%;
-}
+
 
 .public-DraftStyleDefault-ul , .public-DraftStyleDefault-ol , blockquote{
   background-color:#e84545;
@@ -70,11 +67,6 @@ blockquote{
   color:#fff;
 }
 
-
-.notranslate, .public-DraftEditor-content{
-  width:100%;
-  height:100%;
-}
 
 `;
 
