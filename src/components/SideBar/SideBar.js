@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import * as _ from "../../style/components/SideBar.Style";
 import { StoreContext } from "../../utils/Store";
 import MapByCategory from "./MapByCategory";
@@ -6,14 +6,8 @@ import MapByCategory from "./MapByCategory";
 function SideBar() {
   const { DRAFT, DROP, CATEGORY, MOBILE } = useContext(StoreContext);
   const { notes, windowWith, openNote } = DRAFT;
-  const {
-    onDragOver,
-    Style,
-    onDrop,
-    setDetect,
-    UpdateDragWay,
-    DragControl,
-  } = DROP;
+  const { onDragOver, Style, onDrop, setDetect, UpdateDragWay, DragControl } =
+    DROP;
   const { categoriesPanel } = CATEGORY;
   const { mobile, setMobileD } = MOBILE;
 
@@ -23,6 +17,8 @@ function SideBar() {
       setMobileD(!mobile);
     }
   };
+
+  const Category = useMemo(() => categoriesPanel, [categoriesPanel]);
 
   return (
     <_.Section open={mobile}>
@@ -34,7 +30,7 @@ function SideBar() {
       </_.Header>
       <_.Data>
         <_.Div>
-          {categoriesPanel.map((data, i) => (
+          {Category.map((data, i) => (
             <MapByCategory
               key={i}
               data={data}
