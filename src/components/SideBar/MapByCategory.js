@@ -1,9 +1,12 @@
+import { useMemo } from "react";
 import * as _ from "../../style/components/SideBar.Style";
 import CategoryData from "./CategoryData";
 
 const MapByCategory = (props) => {
-  const FilterByCategory = props.notes.filter(
-    (item) => item.category.trim() === props.data.trim()
+  const FilterByCategory = useMemo(
+    () =>
+      props.notes.filter((item) => item.category.trim() === props.data.trim()),
+    [props.data, props.notes]
   );
 
   return (
