@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { StoreContext } from "../../utils/Store";
 import FormData from "./Form";
 import * as _ from "../../style/components/MenuOption";
+import { useCallback } from "react";
 
 const MenuOptions = () => {
   const { MENU, DRAFT, MOBILE } = useContext(StoreContext);
@@ -9,17 +10,20 @@ const MenuOptions = () => {
   const { addNote, deleteNote, notes, windowWith } = DRAFT;
   const { mobile, setMobileD } = MOBILE;
 
-  const handleClick = () => setOpenMenu(() => !openMenu);
+  const handleClick = useCallback(
+    () => setOpenMenu(() => !openMenu),
+    [openMenu, setOpenMenu]
+  );
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     deleteNote();
     handleClick();
-  };
+  }, [deleteNote, handleClick]);
 
-  const handleMenu = () => {
+  const handleMenu = useCallback(() => {
     setOpenMenu(!openMenu);
     setMobileD(!mobile);
-  };
+  }, [mobile, openMenu, setMobileD, setOpenMenu]);
 
   return (
     <_.NavBar
