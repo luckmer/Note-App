@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { StoreContext } from "../../utils/Store";
 import * as _ from "../../style/components/WrapperControl";
 
@@ -6,7 +6,9 @@ function WrapperControl() {
   const { MENU } = useContext(StoreContext);
   const { ref, openMenu, setOpenMenu, x, y } = MENU;
 
-  const handleClick = () => setOpenMenu(() => !openMenu);
+  const handleClick = useCallback(() => {
+    setOpenMenu(() => !openMenu);
+  }, [openMenu, setOpenMenu]);
 
   return (
     <_.Wrapper x={x} y={y} ref={ref}>
