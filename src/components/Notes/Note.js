@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { BlockStyleControls, InlineStyleControls } from "./BlockStyleControl";
 import * as _ from "../../style/components/Note.Style";
 import { StoreContext } from "../../utils/Store";
@@ -16,7 +16,10 @@ function Note() {
     openNote,
   } = DRAFT;
 
-  const handleChange = (editorState) => setEditorState(editorState);
+  const handleChange = useCallback(
+    (editorState) => setEditorState(editorState),
+    [setEditorState]
+  );
 
   const onDragOver = (e) => e.preventDefault();
 
@@ -26,29 +29,32 @@ function Note() {
     openNote(Find.id);
   };
 
+  const BlockStyleControl = useCallback(
+    () => BlockStyleControls({ editorState, onToggle: toggleBlockType }),
+    [editorState, toggleBlockType]
+  );
+
+  const InlineStyleControl = useCallback(
+    () => InlineStyleControls({ editorState, onToggle: toggleInlineStyle }),
+    [editorState, toggleInlineStyle]
+  );
+
+  const EditorState = useCallback(
+    () => <Editor editorState={editorState} onChange={handleChange} />,
+    [editorState, handleChange]
+  );
+
   return (
     <_.Section>
       <_.Nav>
         <_.NavDiv>
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={toggleBlockType}
-          />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={toggleInlineStyle}
-          />
+          <BlockStyleControl />
+          <InlineStyleControl />
         </_.NavDiv>
       </_.Nav>
       <_.DivNote>
         <_.Div onDragOver={(e) => onDragOver(e)} onDrop={() => Drop()}>
-          <_.NoteDiv>
-            {notes.length ? (
-              <Editor editorState={editorState} onChange={handleChange} />
-            ) : (
-              ""
-            )}
-          </_.NoteDiv>
+          <_.NoteDiv>{notes.length ? <EditorState /> : ""}</_.NoteDiv>
         </_.Div>
       </_.DivNote>
     </_.Section>
